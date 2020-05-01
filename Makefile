@@ -3,7 +3,7 @@
 os=osx
 
 migrate:
-	./tool/migrate.${os} -source file://./migration \
+	./tool/migrate.${os} -source file://./db/migration \
 		-database mysql://${user}:${password}@tcp\(${host}:${port}\)/${database} up
 
 migrate-local:
@@ -11,7 +11,7 @@ migrate-local:
 	make migrate user=root password=secret host=0.0.0.0 database=test port=3308
 
 create-migration:
-	./tool/migrate.${os} create -ext sql -dir ./migration ${name}
+	./tool/migrate.${os} create -ext sql -dir ./db/migration ${name}
 
 deploy: build
 	heroku container:push web
