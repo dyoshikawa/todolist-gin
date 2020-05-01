@@ -1,6 +1,7 @@
 package mysql_repository
 
-type TodoMysqlRepository struct{}
+type TodoMysqlRepository struct {
+}
 
 type CreateTodoParams struct {
 	body string
