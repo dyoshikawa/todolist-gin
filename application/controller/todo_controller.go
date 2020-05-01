@@ -1,4 +1,4 @@
-package application
+package controller
 
 type TodoApplication interface {
 }
