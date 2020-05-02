@@ -7,11 +7,14 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func initDb() (*gorp.DbMap, error) {
+var Db *gorp.DbMap
+
+func InitDb() error {
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s)/%s", "root", "secet", "localhost:3307", "dev")
 	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}, nil
+	Db = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
+	return nil
 }
